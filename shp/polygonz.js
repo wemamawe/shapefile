@@ -1,8 +1,8 @@
-
+import {ringClockwise, ringContainsSome} from "./polygon";
 export default function(record) {
         var z=0,i = 44, j, n = record.getInt32(36, true), m = record.getInt32(40, true), parts = new Array(n), points = new Array(m), polygons = [], holes = [];
         for (j = 0; j < n; ++j, i += 4) parts[j] = record.getInt32(i, true);
-        z = i + 16*m + 16
+        z = i + 16*m + 16;
         for (j = 0; j < m; ++j, i += 16,z+=8) points[j] = [record.getFloat64(i, true), record.getFloat64(i + 8, true),record.getFloat64(z, true)];
 
         parts.forEach(function(i, j) {

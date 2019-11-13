@@ -23,14 +23,14 @@ export default function(record) {
       : {type: "MultiPolygon", coordinates: polygons};
 };
 
-function ringClockwise(ring) {
+export function ringClockwise(ring) {
   if ((n = ring.length) < 4) return false;
   var i = 0, n, area = ring[n - 1][1] * ring[0][0] - ring[n - 1][0] * ring[0][1];
   while (++i < n) area += ring[i - 1][1] * ring[i][0] - ring[i - 1][0] * ring[i][1];
   return area >= 0;
 }
 
-function ringContainsSome(ring, hole) {
+export function ringContainsSome(ring, hole) {
   var i = -1, n = hole.length, c;
   while (++i < n) {
     if (c = ringContains(ring, hole[i])) {
